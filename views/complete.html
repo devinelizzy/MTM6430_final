@@ -1,0 +1,15 @@
+<span ng-class="{'done':todo.done}">Task: {{todo.task}}</span><br>
+<span ng-class="{'done':todo.done}">Due Date: {{todo.date | date:date}}</span><br>
+<span ng-class="{'done':todo.done}">Category: {{todo.category}}</span><br>
+<span ng-class="{'done':todo.done}">Importance: {{todo.importance}}</span><br>
+<span ng-class="{'done':todo.done}">Comment: {{todo.comments}}</span><br>
+<span>Item Complete:
+  <button type="checkbox" class="btn btn-link" ng-click="toggleDone(todo)">
+    <span class="fa" ng-class="todo.done ? 'fa-check-square-o' : 'fa-square-o' "></span>
+  </button>
+</span>
+<br>
+<button class="btn btn-danger btn-sm fa fa-trash" ng-click="removeThisTodo(todo)">
+   Delete Item
+ </button>
+<hr>

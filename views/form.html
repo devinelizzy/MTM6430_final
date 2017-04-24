@@ -1,0 +1,41 @@
+<form name="form" ng-submit="submit()">
+    <h4>Task:
+      <input type="text" class="inline-form-control" ng-model="todo.task">
+    </h4>
+    <h5>Due Date:
+      <input type="text" class="inline-form-control" ng-model="todo.date">
+    </h5>
+    <h5>Category: <!-- <input type="text" class="inline-form-control"  ng-model="todo.category"> -->
+    <select class="inline-form-control" ng-model="todo.category" ng-change="saveThisTodo(todo)">
+        <option>Home</option>
+        <option>Work</option>
+        <option>School</option>
+    </select>
+    </h5>
+    <h5>Importance:
+      <select class="inline-form-control" ng-model="todo.importance" ng-change="saveThisTodo(todo)">
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+      </select>
+    </h5>
+    <!-- <input type="text" class="inline-form-control" ng-model="todo.importance"></h5> -->
+    <h5>Comments:
+      <input type="text"
+            class="inline-form-control"
+            ng-model="todo.comments"></h5>
+    <h5>Item Complete:
+      <button type="checkbox" class="btn btn-link" ng-click="toggleDone(todo)">
+        <span ng-class="todo.done ? 'fa fa-check-square-o' : 'fa fa-square-o' "></span>
+      </button>
+    </h5>
+    <button ng-disabled="!form.$dirty"
+            type="submit"
+            class="btn btn-primary btn-sm fa-icon-save"
+            ng-click="saveThisTodo(todo)">
+            Save Changes
+    </button>
+    <button class="btn btn-danger btn-sm fa fa-trash" ng-click="removeThisTodo(todo)">
+            Delete Item
+    </button>
+</form>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Angular Fore Todo list</title>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans" rel="stylesheet">
+</head>
+
+<body ng-app="myApp">
+
+    <div class="wrapper">
+        <!-- header-->
+        <section class="container-fluid" id="header">
+            <header>
+                <h1 class="text-center">Things to Do</h1>
+                <h2 class="text-center">– An AngularFire ToDo App –</h2>
+            </header>
+        </section>
+        <!-- header-->
+        <div id="body">
+
+            <div class="col-md-12 col-xs-12 center-block">
+
+                <!-- add new item form - EVERYTHING WORKS! -->
+                <section class="new-todo-form" ng-controller="placeholderCtrl as ctrl">
+                    <h2>Add new Item</h2>
+                    <form ng-submit="ctrl.addTodo(ctrl.newTodo)" name="myForm">
+                        <div class="form-group">
+                            <label for="task">Task</label>
+                            <input type="text" class="form-control" id="name" required ng-model="ctrl.newTodo.task">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Date</label>
+                            <input type="text"
+                                  class="form-control" id="date"
+                                  placeholder="YYYY-MM-DD"
+                                  required ng-model="ctrl.newTodo.date" >
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Category</label>
+                            <select class="form-control" type="dropdown" id="category" required ng-model="ctrl.newTodo.category">
+                                <option>Home</option>
+                                <option>Work</option>
+                                <option>School</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="importance">Importance</label>
+                            <select class="form-control" type="dropdown" id="importance" ng-model="ctrl.newTodo.importance">
+                                <option>High</option>
+                                <option>Medium</option>
+                                <option>Low</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comments">Comments</label>
+                            <input type="text" class="form-control" id="comments" ng-model="ctrl.newTodo.comments">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                    Add new Task
+                  </button>
+                    </form>
+                </section>
+                <br>
+                <hr>
+
+
+                <h2 class="text-center">Things to do</h2>
+                <!-- nav for categories -->
+                <ul class="nav nav-tabs nav-justified">
+                    <li><a ng-href="/#!/details/home">Home</a></li>
+                    <li><a ng-href="/#!/details/school">School</a></li>
+                    <li><a ng-href="/#!/details/work">Work</a></li>
+                    <li class="active"><a ng-href="/#!/">All</a></li>
+                </ul>
+                </section>
+
+                <br>
+
+
+
+                <!-- body (template)-->
+
+                <div ng-view class="view-animate"></div>
+                <!-- ngView used with $route to show the template for the specified route.
+      This will update only this section of the page with the new template -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Angular components -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+    <!-- JS File-->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

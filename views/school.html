@@ -1,0 +1,15 @@
+<section class="text-center" ng-controller="allCtrl as ctrl">
+  <ul>
+    <li ng-repeat="todo in todos | filter:{category:'School'} | filter:{done:false} track by todo.$id "
+        ng-class="{'high': todo.importance == 'High' , 'medium': todo.importance == 'Medium', 'low': todo.importance == 'Low'}">
+      <todo-form></todo-form>
+    </li>
+  </ul>
+  <hr>
+  <h2 class="text-center">Completed</h2>
+  <ul>
+    <li ng-repeat="todo in todos | filter:{category:'School'} | filter:{done:true} track by todo.$id">
+      <todo-complete></todo-complete>
+    </li>
+  </ul>
+</section>
